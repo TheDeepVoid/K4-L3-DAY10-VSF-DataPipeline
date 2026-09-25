@@ -1,3 +1,4 @@
+streamlit>=1.40.0
 chromadb>=1.0.12
 datasets>=4.0.0
 great-expectations>=1.16.1
