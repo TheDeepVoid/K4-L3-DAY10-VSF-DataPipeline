@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import UTC, datetime, timedelta
+from datetime import timezone, datetime, timedelta
 from pathlib import Path
 import os
 
@@ -73,7 +73,7 @@ def load_settings(project_dir: Path | None = None) -> Settings:
     root = (project_dir or Path(__file__).resolve().parents[2]).resolve()
     workspace = root.parent
     freshness_threshold_days = 180
-    source_from_date = (datetime.now(UTC).date() - timedelta(days=freshness_threshold_days)).isoformat()
+    source_from_date = (datetime.now(timezone.utc).date() - timedelta(days=freshness_threshold_days)).isoformat()
 
     load_dotenv(workspace / ".env")
     load_dotenv(root / ".env", override=False)

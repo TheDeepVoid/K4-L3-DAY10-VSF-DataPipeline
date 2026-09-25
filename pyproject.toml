@@ -3,7 +3,7 @@ name = "day10-data-observability-lab-student"
 version = "0.1.0"
 description = "Student starter lab for Day 10 data pipeline, data observability, and RAG evaluation."
 readme = "README.md"
-requires-python = ">=3.11,<3.14"
+requires-python = ">=3.10,<3.14"
 dependencies = [
   "chromadb>=1.0.12",
   "datasets>=4.0.0",

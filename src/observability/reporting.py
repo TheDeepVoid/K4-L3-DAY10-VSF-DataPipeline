@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from typing import Any
-
+from core.utils import write_text
 
 def generate_phase1_report(
     report_path,
@@ -10,15 +10,25 @@ def generate_phase1_report(
     quality: dict[str, Any],
     freshness: dict[str, Any],
 ) -> None:
-    """TODO(student): viet markdown report cho baseline phase.
+    """Viet markdown report cho baseline phase."""
+    md = f"""# Baseline Pipeline Report
 
-    Pseudo-code:
-    1. Gom source summary.
-    2. In metrics retrieval/evaluation.
-    3. In data quality va freshness.
-    4. Ghi markdown vao report_path.
-    """
-    raise NotImplementedError("Student task: implement phase 1 report.")
+## 1. Source Summary
+- Total documents fetched: {source_summary.get('fetched', 0)}
+- Clean documents saved: {source_summary.get('cleaned', 0)}
+
+## 2. Data Quality & Freshness
+- Quality Check Success: {quality.get('success', False)}
+- Is Fresh: {freshness.get('is_fresh', False)}
+- Stale Rows: {freshness.get('stale_rows', 0)} / {freshness.get('total_rows', 0)}
+
+## 3. Evaluation Metrics
+- Hit Rate: {metrics.get('retrieval_hit_rate', 0.0):.2%}
+- Mean Token F1: {metrics.get('mean_token_f1', 0.0):.2%}
+- Judge Accuracy: {metrics.get('judge_accuracy', 0.0):.2%}
+- Mean Judge Score: {metrics.get('mean_judge_score', 0.0):.2f}/5
+"""
+    write_text(report_path, md)
 
 
 def generate_corruption_report(
@@ -31,5 +41,14 @@ def generate_corruption_report(
     corrupted_freshness: dict[str, Any],
     repaired_freshness: dict[str, Any],
 ) -> None:
-    """TODO(student): viet markdown report so sanh baseline/corrupted/repaired."""
-    raise NotImplementedError("Student task: implement corruption comparison report.")
+    """Viet markdown report so sanh baseline/corrupted/repaired."""
+    md = f"""# Data Corruption & Repair Report
+
+| Metric | Baseline | Corrupted | Repaired |
+|---|---|---|---|
+| Hit Rate | {baseline_metrics.get('retrieval_hit_rate', 0):.2%} | {corrupted_metrics.get('retrieval_hit_rate', 0):.2%} | {repaired_metrics.get('retrieval_hit_rate', 0):.2%} |
+| Mean Token F1 | {baseline_metrics.get('mean_token_f1', 0):.2%} | {corrupted_metrics.get('mean_token_f1', 0):.2%} | {repaired_metrics.get('mean_token_f1', 0):.2%} |
+| Quality Success | N/A | {corrupted_quality.get('success', False)} | {repaired_quality.get('success', False)} |
+| Is Fresh | N/A | {corrupted_freshness.get('is_fresh', False)} | {repaired_freshness.get('is_fresh', False)} |
+"""
+    write_text(report_path, md)

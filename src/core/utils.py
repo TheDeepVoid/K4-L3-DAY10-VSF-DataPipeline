@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import UTC, datetime
+from datetime import timezone, datetime
 import json
 from pathlib import Path
 import re
@@ -31,7 +31,7 @@ def write_text(path: Path, text: str) -> None:
 
 
 def now_utc() -> datetime:
-    return datetime.now(UTC)
+    return datetime.now(timezone.utc)
 
 
 def normalize_whitespace(value: str) -> str:
