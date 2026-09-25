@@ -55,5 +55,39 @@ def generate_corruption_report(
     corrupted_freshness: dict[str, Any],
     repaired_freshness: dict[str, Any],
 ) -> None:
-    """TODO(student): viet markdown report so sanh baseline/corrupted/repaired."""
-    raise NotImplementedError("Student task: implement corruption comparison report.")
+    """Write the three-state corruption and repair comparison report."""
+    def metric_row(name: str, precision: int = 4) -> str:
+        values = [baseline_metrics, corrupted_metrics, repaired_metrics]
+        formatted = []
+        for value in values:
+            metric = value.get(name)
+            formatted.append("N/A" if metric is None else f"{metric:.{precision}f}")
+        return f"| `{name}` | {formatted[0]} | {formatted[1]} | {formatted[2]} |"
+
+    lines = [
+        "# Corruption and Repair Comparison",
+        "",
+        "| Metric | Baseline | Corrupted | Repaired |",
+        "| --- | ---: | ---: | ---: |",
+        metric_row("retrieval_hit_rate"),
+        metric_row("mean_token_f1"),
+        metric_row("judge_accuracy"),
+        metric_row("mean_judge_score", 2),
+        "",
+        "## Quality and Freshness",
+        "",
+        "| Signal | Corrupted | Repaired |",
+        "| --- | --- | --- |",
+        f"| Quality gate | {'PASS' if corrupted_quality.get('success') else 'FAIL'} | {'PASS' if repaired_quality.get('success') else 'FAIL'} |",
+        f"| Freshness | {'PASS' if corrupted_freshness.get('is_fresh') else 'WARNING'} | {'PASS' if repaired_freshness.get('is_fresh') else 'WARNING'} |",
+        f"| Stale rows | {corrupted_freshness.get('stale_rows', 0)}/{corrupted_freshness.get('total_rows', 0)} | {repaired_freshness.get('stale_rows', 0)}/{repaired_freshness.get('total_rows', 0)} |",
+        "",
+        "## Interpretation",
+        "",
+        "- The corrupted dataset intentionally contains missing summaries, duplicate IDs, stale dates, truncated titles, and noisy embedding text.",
+        "- The repaired dataset is rebuilt from the raw snapshot rather than patched in place.",
+        "- The same benchmark test set is used in all three evaluations.",
+    ]
+    path = Path(report_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")

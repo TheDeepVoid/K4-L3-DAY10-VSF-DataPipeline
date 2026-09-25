@@ -1,0 +1,39 @@
+{
+  "success": false,
+  "freshness": {
+    "latest_published": "2026-06-12",
+    "oldest_published": "2021-09-26",
+    "stale_rows": 2,
+    "total_rows": 24,
+    "stale_ratio": 0.08333333333333333,
+    "threshold_days": 180,
+    "max_stale_ratio": 0.25,
+    "is_fresh": true
+  },
+  "expectations": [
+    {
+      "type": "expect_table_row_count_to_be_between",
+      "success": true
+    },
+    {
+      "type": "expect_column_values_to_not_be_null",
+      "success": true
+    },
+    {
+      "type": "expect_column_values_to_be_unique",
+      "success": false
+    },
+    {
+      "type": "expect_column_values_to_not_be_null",
+      "success": true
+    },
+    {
+      "type": "expect_column_values_to_not_be_null",
+      "success": true
+    },
+    {
+      "type": "expect_column_value_lengths_to_be_between",
+      "success": false
+    }
+  ]
+}
