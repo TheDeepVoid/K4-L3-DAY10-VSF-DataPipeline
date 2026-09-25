@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-09-25T09:14:30.161866+00:00",
+  "threshold_days": 180,
+  "stale_ratio_limit": 0.25,
+  "total_rows": 24,
+  "stale_rows": 1,
+  "stale_ratio": 0.0417,
+  "is_fresh": true,
+  "status": "ok",
+  "alert": null,
+  "latest_published": "2026-07-22",
+  "oldest_published": "2026-03-28",
+  "max_age_days": 181,
+  "mean_age_days": 114.33,
+  "median_age_days": 110.5
+}

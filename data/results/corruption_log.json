@@ -1,0 +1,86 @@
+{
+  "generated_at": "2026-09-25T09:13:41.780855+00:00",
+  "seed": 42,
+  "original_row_count": 24,
+  "corrupted_row_count": 21,
+  "corruption_types": [
+    "drop_latest_records",
+    "blank_summary",
+    "inject_noise",
+    "truncate_title",
+    "stale_date",
+    "duplicate_rows"
+  ],
+  "summary": {
+    "drop_latest_records": 5,
+    "blank_summary": 2,
+    "inject_noise": 2,
+    "truncate_title": 2,
+    "stale_date": 7,
+    "duplicate_rows": 2
+  },
+  "corruptions": [
+    {
+      "type": "drop_latest_records",
+      "description": "Ingestion dropped the newest 20% of records.",
+      "affected_rows": 5,
+      "paper_ids": [
+        "10.1145/3637528.3671812",
+        "10.1145/3637528.3671808",
+        "10.1145/3637528.3671804",
+        "10.1145/3637528.3671807",
+        "10.1145/3637528.3671802"
+      ]
+    },
+    {
+      "type": "blank_summary",
+      "description": "Summary emptied for selected rows.",
+      "affected_rows": 2,
+      "paper_ids": [
+        "10.1145/3637528.3671824",
+        "10.1145/3637528.3671823"
+      ]
+    },
+    {
+      "type": "inject_noise",
+      "description": "Random punctuation injected into summaries.",
+      "affected_rows": 2,
+      "paper_ids": [
+        "10.1145/3637528.3671822",
+        "10.1145/3637528.3671821"
+      ]
+    },
+    {
+      "type": "truncate_title",
+      "description": "Titles truncated to 3 characters.",
+      "affected_rows": 2,
+      "paper_ids": [
+        "10.1145/3637528.3671810",
+        "10.1145/3637528.3671820"
+      ]
+    },
+    {
+      "type": "stale_date",
+      "description": "Publication dates rewritten to 1990-01-01.",
+      "affected_rows": 7,
+      "paper_ids": [
+        "10.1145/3637528.3671819",
+        "10.1145/3637528.3671818",
+        "10.1145/3637528.3671817",
+        "10.1145/3637528.3671816",
+        "10.1145/3637528.3671815",
+        "10.1145/3637528.3671814",
+        "10.1145/3637528.3671813"
+      ]
+    },
+    {
+      "type": "duplicate_rows",
+      "description": "Selected rows duplicated, creating repeated paper_id values.",
+      "affected_rows": 2,
+      "paper_ids": [
+        "10.1145/3637528.3671803",
+        "10.1145/3637528.3671805"
+      ]
+    }
+  ]
+}

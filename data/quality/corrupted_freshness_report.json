@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-09-25T09:13:42.803389+00:00",
+  "threshold_days": 180,
+  "stale_ratio_limit": 0.25,
+  "total_rows": 21,
+  "stale_rows": 9,
+  "stale_ratio": 0.4286,
+  "is_fresh": false,
+  "status": "alert",
+  "alert": "Freshness SLA breached: 42.9% of rows are older than 180 days (limit 25%).",
+  "latest_published": "2026-06-12",
+  "oldest_published": "1990-01-01",
+  "max_age_days": 13416,
+  "mean_age_days": 4561.62,
+  "median_age_days": 160.0
+}

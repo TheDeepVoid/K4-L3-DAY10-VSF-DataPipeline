@@ -6,3 +6,8 @@ src/*.egg-info/
 lab/
 **/__pycache__/
 doc_verification_report.md
+
+# ChromaDB vector store: a regenerable binary cache (HNSW .bin + sqlite3) that is
+# rebuilt by `python script/run_phase1.py` and `script/run_corruption_flow.py`.
+# The committed data/embeddings/*.json manifests record what was indexed.
+data/chroma/
