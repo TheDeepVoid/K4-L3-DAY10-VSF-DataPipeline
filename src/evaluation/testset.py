@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
+import json
 from typing import Any
 import pandas as pd
 from core.utils import write_json, first_sentence

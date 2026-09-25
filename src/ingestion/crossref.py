@@ -5,12 +5,16 @@ import logging
 import re
 import time
 from dataclasses import dataclass
+from datetime import date
+import html
+import json
 from pathlib import Path
 from typing import Any
 
 import requests
 
 from core.config import Settings
+from core.utils import normalize_whitespace, write_json
 
 logger = logging.getLogger(__name__)
 

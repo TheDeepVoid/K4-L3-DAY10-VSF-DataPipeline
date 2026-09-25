@@ -6,6 +6,7 @@ import pandas as pd
 
 from core.utils import compact_join, normalize_whitespace
 from ingestion.crossref import PaperRecord
+from core.utils import compact_join, normalize_whitespace, write_csv, write_json
 
 
 def build_clean_dataframe(records: list[PaperRecord], run_date: datetime) -> pd.DataFrame:
